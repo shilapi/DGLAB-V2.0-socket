@@ -5,18 +5,18 @@ class dglab_message:
         self.targetId = targetId
         self.message = message
 
+
 class local_data:
     def __init__(self, clientId: str):
         self.clientId = clientId
         self.targetId = None
-        self.limitA = 200
-        self.limitB = 200
-        self.limitAInit = 0
-        self.limitBInit = 0
+        self.limitA = 30
+        self.limitB = 30
         self.channelAStrength = 0
         self.channelBStrength = 0
-        self.channelAWave = []
-        self.channelBWave = []
+        self.channelAWave = [(0, 0, 0)]
+        self.channelBWave = [(0, 0, 0)]
+
 
 code = {
     200: ("Heartbeat received", True),
@@ -29,5 +29,5 @@ code = {
     403: ("发送的内容不是标准json对象", False),
     404: ("未找到收信人（离线）", False),
     405: ("下发的message长度大于1950", False),
-    500: ("服务器内部异常", False)
+    500: ("服务器内部异常", False),
 }
