@@ -1,5 +1,9 @@
 # DGLAB-V2.0-socket
 
+![GitHub last commit](https://img.shields.io/github/last-commit/shilapi/DGLAB-V2.0-socket)
+![GitHub Release](https://img.shields.io/github/v/release/shilapi/DGLAB-V2.0-socket)
+[![CodeFactor](https://www.codefactor.io/repository/github/shilapi/dglab-v2.0-socket/badge)](https://www.codefactor.io/repository/github/shilapi/dglab-v2.0-socket)
+
  一个完整的DGLAB2.0郊狼2.0 WebSocket受控端实现。基于[DGLAB-python-driver](https://github.com/shilapi/DGLAB-python-driver)。
  
  本项目的目标是让郊狼2.0主机也能用上WebSocket远控协议，降低玩家们的装备购置成本。
