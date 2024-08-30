@@ -28,11 +28,13 @@
 
  **运行程式**
 
- 注意：请务必在项目目录而非src目录运行，不然bug自己修
+对于 Windows 用户，双击 run.bat 即可。
 
- ```
- python3 ./src/main.py
- ```
+对于 Linux 用户，在 **src 的父目录** 执行如下指令：
+
+```
+python ./src/main.py
+```
 
 ## 转换比例解释
 
