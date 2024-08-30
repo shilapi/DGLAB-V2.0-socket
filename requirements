@@ -1,3 +1,5 @@
 pydglab==0.3.0
 websocket-client==1.8.0
 pyyaml
+pillow
+pyzbar

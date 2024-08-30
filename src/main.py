@@ -1,10 +1,13 @@
 import websocket, json
 from model import dglab_message
 from handler import *
+from PIL import ImageGrab
+from pyzbar.pyzbar import decode
 import pydglab
 import asyncio
 import logging
 import yaml
+import time
 
 with open("./config.yaml") as stream:
     try:
@@ -17,7 +20,38 @@ logging.basicConfig(
     level=logging.DEBUG if config["Debug"] else logging.INFO,
 )
 
+def capture_fullscreen():
+    screenshot = ImageGrab.grab()
+    return screenshot
+
+def decode_qr_code(image):
+    decoded_objects = decode(image)
+    qr_data = [obj.data.decode('utf-8') for obj in decoded_objects]
+    return qr_data
+
 qrRaw = config["QR_Content"]
+
+while qrRaw == "":
+
+    time.sleep(1.5)
+
+    qrcodes = decode_qr_code(capture_fullscreen())
+
+    if len(qrcodes) < 1:
+        logging.error("识别二维码失败")
+        continue
+
+    for i in range(len(qrcodes)):
+        if qrcodes[i].find("wss://") != -1:
+            qrRaw = qrcodes[i]
+            break
+
+    if qrRaw == "":
+        logging.info("没有有效的 Websocket 二维码")
+        continue
+    else:
+        logging.info("识别成功，二维码内容：" + qrRaw)
+        break
 
 store = local_data(clientId=qrRaw[82:])
 store.limitA = int(config["Channel_A_limit"])
