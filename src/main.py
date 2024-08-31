@@ -42,7 +42,7 @@ while qrRaw == "":
         continue
 
     for i in range(len(qrcodes)):
-        if qrcodes[i].find("wss://") != -1:
+        if qrcodes[i].find("wss://") != -1 or qrcodes[i].find("ws://") != -1:
             qrRaw = qrcodes[i]
             break
 
