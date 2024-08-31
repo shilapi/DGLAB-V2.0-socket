@@ -121,8 +121,6 @@ async def main():
             await dglab.set_strength_sync(
                 store.channelAStrength, store.channelBStrength
             )
-            logging.debug("channelA wave: " + str(store.channelAWave))
-            logging.debug("channelB wave: " + str(store.channelAWave))
             await dglab.set_wave_set_sync(store.channelAWave, store.channelBWave)
             await asyncio.sleep(0.1)
 

@@ -233,7 +233,6 @@ class dglab(object):
         """
         try:
             while True:
-                logging.debug(self.channelA_wave_set)
                 for wave in self.channelA_wave_set:
                     self.coyote.ChannelA.waveX = wave[0]
                     self.coyote.ChannelA.waveY = wave[1]

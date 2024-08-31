@@ -26,13 +26,9 @@ def dglab_wave_handler(
         # 对每组波形进行切分，以1:4比例丢弃后3/4
         freq = int(i[0:2], 16)
         strength = int(i[8:10], 16)
-        logging.debug("wave: " + i)
-        logging.debug("freq: " + str(freq))
-        logging.debug("strength: " + str(strength))
         waveset.append(convert_to_waveset(strength, freq))
     if channel == "A":
         store.channelAWave = waveset
     elif channel == "B":
         store.channelBWave = waveset
-    logging.debug("waveset: " + str(waveset))
     return

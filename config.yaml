@@ -1,5 +1,5 @@
 QR_Content: ""
 Channel_A_limit: 200
 Channel_B_limit: 200
-Wave_convert_ratio: 2.5
+Wave_convert_ratio: 3
 Debug: True
