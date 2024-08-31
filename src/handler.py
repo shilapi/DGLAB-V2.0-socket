@@ -101,34 +101,34 @@ def _strength(message: str, store: local_data):
     if channel == "1":
         if strength_mode == "0":
             if (
-                store.channelAStrength - int(strength) > 0
-                and store.channelAStrength - int(strength) < store.limitA
+                store.channelAStrength - int(strength) >= 0
+                and store.channelAStrength - int(strength) <= store.limitA
             ):
                 store.channelAStrength = store.channelAStrength - int(strength)
         elif strength_mode == "1":
             if (
-                store.channelAStrength + int(strength) > 0
-                and store.channelAStrength + int(strength) < store.limitA
+                store.channelAStrength + int(strength) >= 0
+                and store.channelAStrength + int(strength) <= store.limitA
             ):
                 store.channelAStrength = store.channelAStrength + int(strength)
         elif strength_mode == "2":
-            if int(strength) > 0 and int(strength) < store.limitA:
+            if int(strength) >= 0 and int(strength) <= store.limitA:
                 store.channelAStrength = int(strength)
     elif channel == "2":
         if strength_mode == "0":
             if (
-                store.channelBStrength - int(strength) > 0
-                and store.channelBStrength - int(strength) < store.limitB
+                store.channelBStrength - int(strength) >= 0
+                and store.channelBStrength - int(strength) <= store.limitB
             ):
                 store.channelBStrength = store.channelBStrength - int(strength)
         elif strength_mode == "1":
             if (
-                store.channelBStrength + int(strength) > 0
-                and store.channelBStrength + int(strength) < store.limitB
+                store.channelBStrength + int(strength) >= 0
+                and store.channelBStrength + int(strength) <= store.limitB
             ):
                 store.channelBStrength = store.channelBStrength + int(strength)
         elif strength_mode == "2":
-            if store.channelBStrength > 0 and store.channelBStrength < store.limitB:
+            if int(strength) >= 0 and int(strength) <= store.limitB:
                 store.channelBStrength = int(strength)
     pass
 

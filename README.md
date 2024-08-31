@@ -5,20 +5,22 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/shilapi/dglab-v2.0-socket/badge)](https://www.codefactor.io/repository/github/shilapi/dglab-v2.0-socket)
 
  一个完整的DGLAB2.0郊狼2.0 WebSocket受控端实现。基于[DGLAB-python-driver](https://github.com/shilapi/DGLAB-python-driver)。
- 
+
  本项目的目标是让郊狼2.0主机也能用上WebSocket远控协议，降低玩家们的装备购置成本。
+
+在原仓库作者重新修正并上传 pip 依赖前一直会放库文件在这里。
 
 ## 基础用法
 
  **修改**`config.yaml`：
- 
- |Key|Value|
- |---|---|
- |QR_Content|连接界面的二维码内容，为一串包含ws://的网址|
- |Channel_A_limit|通道A强度上限|
- |Channel_B_limit|通道B强度上限|
- |Wave_convert_ratio|由3.0的波形转换到2.0波形的转换比例，具体请看下文转换比例一栏|
- |Debug|是否开启debug模式|
+
+|Key|Value|
+|---|---|
+|QR_Content|连接界面的二维码内容，为一串包含ws://或wss://的网址|
+|Channel_A_limit|通道A强度上限|
+|Channel_B_limit|通道B强度上限|
+|Wave_convert_ratio|由3.0的波形转换到2.0波形的转换比例，具体请看下文转换比例一栏|
+|Debug|是否开启debug模式|
 
  **安装依赖**
 
