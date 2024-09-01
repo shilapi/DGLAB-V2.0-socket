@@ -59,7 +59,6 @@ store.limitB = int(config["Channel_B_limit"])
 
 
 def on_message(ws, message):
-    logging.debug(message)
     message = json.loads(message)
     message = dglab_message(
         type_=message["type"],
