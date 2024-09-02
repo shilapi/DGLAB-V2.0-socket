@@ -14,8 +14,8 @@ class local_data:
         self.limitB = 30
         self.channelAStrength = 0
         self.channelBStrength = 0
-        self.channelAWave = [(0, 0, 0)]
-        self.channelBWave = [(0, 0, 0)]
+        self.channelAWave = [(5, 95, 20)]
+        self.channelBWave = [(5, 95, 20)]
 
 
 code = {

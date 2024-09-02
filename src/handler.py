@@ -5,6 +5,8 @@ from websocket import WebSocketApp
 import json, logging
 
 
+logger = logging.getLogger(__name__)
+
 def bind(client: WebSocketApp, message: dglab_message, store: local_data):
     if message.message == "targetId":
         logging.debug("Bind recieved")
@@ -20,15 +22,15 @@ def bind(client: WebSocketApp, message: dglab_message, store: local_data):
 
         client.send(json.dumps(reply))
     elif message.message == "200":
-        logging.info("Bind to remote success")
+        logger.info("Bind to remote success")
     elif int(message.message) in code.keys():
-        logging.error(code[message][0])
+        logger.error(code[message][0])
 
 
 def heartbeat(client: WebSocketApp, message: dglab_message, store: local_data):
     message = int(message.message)
     if message == 200:
-        logging.debug("Heartbeating...")
+        logger.debug("Heartbeating...")
         client.send(
             json.dumps(
                 {
@@ -41,10 +43,10 @@ def heartbeat(client: WebSocketApp, message: dglab_message, store: local_data):
         )
         return
     elif message in code.keys():
-        logging.error(code[message][0])
+        logger.error(code[message][0])
         return
     else:
-        logging.error("Unknown heartbeat message: " + message)
+        logger.error("Unknown heartbeat message: " + message)
         raise Exception("Unknown heartbeat message: " + message)
 
 
@@ -95,7 +97,7 @@ def _strength(message: str, store: local_data):
     channel = strenthDataRaw[0]
     strength_mode = strenthDataRaw[1]
     strength = strenthDataRaw[2]
-    logging.debug(
+    logger.debug(
         "Strength changing: " + channel + "--" + strength_mode + "--" + strength
     )
     if channel == "1":
@@ -136,7 +138,7 @@ def _strength(message: str, store: local_data):
 def _pulse(message: str, store: local_data):
     channel = message.split(":")[0]
     wave_set = json.loads(message.split(":")[1])
-    logging.debug("Pulse changing: " + channel + "--" + str(wave_set))
+    logger.debug("Pulse changing: " + channel + "--" + str(wave_set))
     dglab_wave_handler(store, wave_set, channel)
     pass
 
