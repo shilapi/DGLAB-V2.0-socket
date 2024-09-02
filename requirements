@@ -1,9 +1,5 @@
+pydglab==0.4.2
 websocket-client==1.8.0
 pyyaml
 pillow
 pyzbar
-bitarray==2.9.2
-bitstring==4.2.1
-bleak==0.22.1
-bleak-winrt==1.2.0
-typing_extensions==4.11.0
