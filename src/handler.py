@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 def bind(client: WebSocketApp, message: dglab_message, store: local_data):
     if message.message == "targetId":
-        logging.debug("Bind recieved")
+        logger.debug("Bind recieved")
 
         store.targetId = message.clientId
 
