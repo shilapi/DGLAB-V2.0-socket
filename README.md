@@ -33,7 +33,7 @@
 对于 Linux 用户，在 **src 的父目录** 执行如下指令：
 
 ```
-python ./src/main.py
+python3 ./src/main.py
 ```
 
 ## 转换比例解释
