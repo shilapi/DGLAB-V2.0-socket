@@ -1,4 +1,6 @@
 from model import *
+from PIL import ImageGrab
+from pyzbar.pyzbar import decode
 
 import yaml, logging
 
@@ -32,3 +34,20 @@ def dglab_wave_handler(
     elif channel == "B":
         store.channelBWave = waveset
     return
+
+def decode_qr_code(image):
+    decoded_objects = decode(image)
+    qr_data = [obj.data.decode('utf-8') for obj in decoded_objects]
+    return qr_data
+
+def find_qr_code():
+    qrcodes = decode_qr_code(ImageGrab.grab())
+    if len(qrcodes) < 1:
+        return ""
+    qrcode = ""
+    for i in range(len(qrcodes)):
+        if qrcodes[i].find("wss://") != -1 or qrcodes[i].find("ws://") != -1:
+            qrcode = qrcodes[i]
+            break
+    
+    return qrcode
