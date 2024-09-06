@@ -8,6 +8,7 @@ import yaml
 import time
 from rich.table import Table
 from rich.live import Live
+from utils import find_qr_code
 
 with open("./config.yaml") as stream:
     try:
@@ -34,6 +35,19 @@ logger.addHandler(fh)
 logger.addHandler(sh)
 
 qrRaw = config["QR_Content"]
+
+while qrRaw == "":
+
+    time.sleep(1.5)
+
+    qrRaw = find_qr_code()
+
+    if qrRaw == "":
+        logging.info("没有有效的 Websocket 二维码")
+        continue
+    else:
+        logging.info("识别成功，二维码内容：" + qrRaw)
+        break
 
 store = local_data(clientId=qrRaw[82:])
 store.limitA = int(config["Channel_A_limit"])
