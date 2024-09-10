@@ -54,13 +54,14 @@ store.limitA = int(config["Channel_A_limit"])
 store.limitB = int(config["Channel_B_limit"])
 
 
-def on_message(ws, message):
-    message = json.loads(message)
+def on_message(ws, message_raw):
+    logger.debug(f"Received message: {message_raw}")
+    message_dict: dict = json.loads(message_raw)
     message = dglab_message(
-        type_=message["type"],
-        clientId=message["clientId"],
-        targetId=message["targetId"],
-        message=message["message"],
+        type_=message_dict["type"],
+        clientId=message_dict["clientId"],
+        targetId=message_dict["targetId"],
+        message=message_dict["message"],
     )
     if message.type_ == "heartbeat":
         heartbeat(ws, message, store)
