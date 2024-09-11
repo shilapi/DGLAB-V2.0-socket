@@ -24,7 +24,9 @@ def bind(client: WebSocketApp, message: dglab_message, store: local_data):
     elif message.message == "200":
         logger.info("Bind to remote success")
     elif int(message.message) in code.keys():
-        logger.error(code[message][0])
+        # Error occured while binding
+        error_code = int(message.message)
+        logger.error(code[error_code][0])
 
 
 def heartbeat(client: WebSocketApp, message: dglab_message, store: local_data):
